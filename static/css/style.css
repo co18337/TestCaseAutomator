@@ -1,0 +1,62 @@
+:root{
+  --bg0:#060509;
+  --bg1:#0b0b0f;
+  --panel:#101014;
+  --muted:#9aa3b2;
+  --accent:#7a4f78;
+  --teal:#4aa79f;
+  --glass:rgba(255,255,255,0.02);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:ui-monospace, "Roboto Mono", monospace;background:linear-gradient(180deg,var(--bg0),var(--bg1));color:#d7e7e6}
+.wrap{max-width:1200px;margin:24px auto;padding:20px}
+.hero{display:flex;align-items:center;justify-content:center;height:150px;position:relative;overflow:visible}
+.hero-inner{text-align:center;transform:translateY(-6px)}
+.site-title{font-size:48px;letter-spacing:1px;margin:0;color:#f4fbfb;animation:pop 900ms cubic-bezier(.2,.9,.2,1)}
+.title-line{display:inline-block;padding:6px 14px;border-radius:14px;background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.012));box-shadow:0 14px 40px rgba(0,0,0,0.6)}
+.subtitle{margin-top:10px;color:var(--muted);font-size:14px;opacity:0;animation:fadeUp 1200ms 350ms forwards}
+@keyframes pop{0%{transform:scale(.86) translateY(8px);opacity:0}60%{transform:scale(1.03) translateY(-6px);opacity:1}100%{transform:scale(1) translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.container{margin-top:18px}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.step{background:var(--panel);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);color:var(--teal);font-weight:700}
+.panel{background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.012));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);margin-bottom:18px}
+.upload-panel{display:grid;grid-template-columns:7fr 5fr;gap:18px;align-items:start}
+.label{display:block;color:var(--muted);margin-bottom:8px;font-size:13px}
+.drag-area{border:2px dashed rgba(255,255,255,0.03);border-radius:10px;min-height:160px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .12s}
+.drag-area.dragover{background:linear-gradient(90deg,rgba(74,167,159,0.03),rgba(122,79,120,0.02));border-color:rgba(74,167,159,0.18)}
+.drop-cta{color:var(--muted);font-size:15px}
+.hint{margin-top:8px;color:var(--muted);font-size:13px}
+.hidden{display:none}
+.preview-wrapper{margin-top:12px}
+.preview-wrapper img{max-width:100%;height:auto;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+.row{display:flex;gap:12px;margin-top:12px}
+.col{flex:1}
+.input{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:#e6f6f2}
+.textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:8px;color:#e6f6f2;resize:vertical}
+.mt{margin-top:12px}
+.center-action{display:flex;justify-content:center;margin:18px 0}
+.btn-primary{background:linear-gradient(90deg,var(--teal),var(--accent));color:#041212;padding:12px 20px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:10px 14px;border-radius:8px;cursor:pointer}
+.status{margin-top:8px;text-align:center;color:var(--muted)}
+.review-panel{padding:18px}
+.review-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.panel-title{font-weight:800;color:#edf8f6}
+.muted{color:var(--muted)}
+.review-body{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+.card{background:linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.12));padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.card-title{font-size:20px;color:#e9f6f4;margin:6px 0}
+.subhead{color:var(--muted);margin-bottom:6px}
+.codebox{background:rgba(0,0,0,0.24);padding:12px;border-radius:8px;white-space:pre-wrap;color:#c6efe7}
+.card-actions{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.left-actions,.right-actions{display:flex;gap:8px}
+.logger{background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.01));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+.small-row{display:flex;gap:8px;margin-top:8px}
+.footer{text-align:center;margin-top:28px;color:var(--muted);font-size:13px}
+.hidden{display:none}
+@media (max-width:900px){
+  .upload-panel{grid-template-columns:1fr}
+  .review-body{grid-template-columns:1fr}
+  .site-title{font-size:36px}
+}

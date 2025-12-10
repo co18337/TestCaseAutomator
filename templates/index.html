@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TestCaseAutomator</title>
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-inner">
+        <h1 class="site-title">
+          <span class="title-line">TestCaseAutomator</span>
+        </h1>
+        <div class="subtitle">
+          <!-- <span class="agents">crafted by many AI agents</span> -->
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="steps">
+        <div class="step">Step 1 — Upload</div>
+        <div class="step">Step 2 — Review</div>
+      </section>
+
+      <section class="panel upload-panel">
+        <div class="left">
+          <label class="label">Screenshot (drag & drop or click)</label>
+          <div id="dragArea" class="drag-area">
+            <div class="drag-inner">
+              <div class="drop-cta">Drop image here</div>
+              <div class="hint">PNG / JPG / WebP — up to 10MB</div>
+            </div>
+            <input id="fileInput" name="screenshot" type="file" accept="image/*" class="hidden" />
+          </div>
+          <div id="previewWrapper" class="preview-wrapper"></div>
+
+          <div class="row">
+            <div class="col">
+              <label class="label">Release Version</label>
+              <input id="release_version" class="input" placeholder="v1.0.0" value="v1.0.0" />
+            </div>
+            <div class="col">
+              <label class="label">Tester</label>
+              <input id="tester_name" class="input" placeholder="Prince" value="Prince" />
+            </div>
+          </div>
+
+          <label class="label">Run Dates (comma separated)</label>
+          <input id="run_dates" class="input" placeholder="17/10/2025,29/10/2025" />
+
+          <div class="row mt">
+            <div class="col">
+              <label class="label">Expected Cases</label>
+              <input id="expected_count" type="number" min="1" max="200" class="input" value="10" />
+            </div>
+            <div class="col">
+              <label class="label">Model (optional)</label>
+              <select id="model_override" class="input">
+                <option value="">Auto (recommended)</option>
+                <option value="models/gemini-2.5-flash">gemini-2.5-flash</option>
+                <option value="models/gemini-2.5-pro">gemini-2.5-pro</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <label class="label">Feature Description</label>
+          <textarea id="description" class="textarea" rows="14" placeholder="Short, precise description"></textarea>
+        </div>
+      </section>
+
+      <div class="center-action">
+        <button id="generateBtn" class="btn-primary">Generate</button>
+      </div>
+
+      <div id="uploadStatus" class="status"></div>
+
+      <section id="reviewPanel" class="panel review-panel hidden">
+        <div class="review-header">
+          <div>
+            <div class="panel-title">Review Test Cases</div>
+            <div id="sessionInfo" class="muted"></div>
+          </div>
+          <div class="review-actions">
+            <button id="exportBtn" class="btn-primary small">Export Excel</button>
+            <button id="backBtn" class="btn-ghost small">Back</button>
+          </div>
+        </div>
+
+        <div class="review-body">
+          <div class="card">
+            <div class="card-head">
+              <div id="cardTs" class="muted">TS001</div>
+              <div id="cardTitle" class="card-title"></div>
+              <div id="cardTc" class="muted">TC001</div>
+            </div>
+            <div class="card-section">
+              <div class="subhead">Steps</div>
+              <pre id="cardSteps" class="codebox"></pre>
+            </div>
+            <div class="card-section">
+              <div class="subhead">Expected</div>
+              <div id="cardExpected" class="codebox"></div>
+            </div>
+            <div class="card-actions">
+              <div class="left-actions">
+                <button id="prevBtn" class="btn-ghost">Prev</button>
+                <button id="nextBtn" class="btn-ghost">Next</button>
+              </div>
+              <div class="right-actions">
+                <button id="skipBtn" class="btn-ghost">Skip</button>
+                <button id="saveBtn" class="btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="logger">
+            <div class="muted">Log Result (Run <span id="activeRunIndex">1</span>)</div>
+            <textarea id="actualResult" class="textarea" rows="6" placeholder="Actual result..."></textarea>
+            <select id="statusSelect" class="input">
+              <option>Not Started</option>
+              <option>PASS</option>
+              <option>FAIL</option>
+              <option>NA</option>
+            </select>
+            <div class="row small-row">
+              <input id="bugId" class="input" placeholder="Bug ID" />
+              <input id="commitId" class="input" placeholder="Commit ID" />
+            </div>
+            <label class="label">Run</label>
+            <select id="runSelect" class="input"></select>
+            <div id="saveStatus" class="muted"></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="muted">© TestCaseAutomator</div>
+    </footer>
+  </div>
+
+  <script src="static/js/app.js" defer></script>
+</body>
+</html>
